@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardElevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/textNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textColor="#040303"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            tools:text="@string/nome_da_tarefa" />
+
+        <TextView
+            android:id="@+id/textDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textColor="#FF040303"
+            android:textSize="25sp"
+            android:textStyle="normal"
+            tools:text="@string/descricao_da_tarefa" />
+
+        <TextView
+            android:id="@+id/textResponsavel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textColor="#FF040303"
+            android:textSize="25sp"
+            android:textStyle="normal"
+            tools:text="@string/responsavel" />
+
+        <TextView
+            android:id="@+id/textData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textColor="#FF040303"
+            android:textSize="25sp"
+            android:textStyle="normal"
+            tools:text="@string/data" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:minHeight="48dp"
+            android:text="@string/em_andamento"
+            android:textColor="#FF040303"
+            android:textSize="25sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/textCategoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/categoria"
+            android:textColor="#FF040303"
+            android:textSize="25sp"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/buttonDeletar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#8E7C06"
+            android:text="@string/deletar_tarefa"
+            android:textSize="22sp" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

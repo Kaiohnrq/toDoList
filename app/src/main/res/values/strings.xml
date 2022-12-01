@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">toDoList</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nome_da_tarefa">Nome da Tarefa</string>
+    <string name="descricao_da_tarefa">Descrição da Tarefa</string>
+    <string name="responsavel">Responsavel</string>
+    <string name="data">Data</string>
+    <string name="em_andamento">Em Andamento</string>
+    <string name="salvar">Salvar</string>
+    <string name="categoria">Categoria</string>
+    <string name="apagar_tarefa">APAGAR TAREFA</string>
+    <string name="deletar_tarefa">Deletar Tarefa</string>
+</resources>
