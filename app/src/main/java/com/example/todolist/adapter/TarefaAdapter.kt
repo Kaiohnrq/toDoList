@@ -5,51 +5,51 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todolist.MainViewModel
 import com.example.todolist.databinding.CardLayoutBinding
-import com.example.todolist.model.Tarefa
+import com.example.todolist.model.Task
 
-class TarefaAdapter(
+class TaskAdapter(
     val taskClickListener: TaskClickListener,
     val mainViewModel: MainViewModel
-    ): RecyclerView.Adapter<TarefaAdapter.TarefaViewHolder>() {
+    ): RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
-    private var listTarefa = emptyList<Tarefa>()
+    private var taskList = emptyList<Task>()
 
-    class TarefaViewHolder (val binding: CardLayoutBinding) : RecyclerView.ViewHolder(binding.root)
+    class TaskViewHolder (val binding: CardLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TarefaViewHolder {
-        return TarefaViewHolder(CardLayoutBinding.inflate(LayoutInflater.from(parent.context),
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
+        return TaskViewHolder(CardLayoutBinding.inflate(LayoutInflater.from(parent.context),
         parent, false
         ))
     }
 
-    override fun onBindViewHolder(holder: TarefaViewHolder, position: Int) {
-        val tarefa = listTarefa[position]
+    override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
+        val task = taskList[position]
 
-        holder.binding.textNome.text = tarefa.nome
-        holder.binding.textDescricao.text = tarefa.descricao
-        holder.binding.textResponsavel.text = tarefa.responsavel
-        holder.binding.textData.text = tarefa.data
-        holder.binding.switch1.isChecked = tarefa.status
-        holder.binding.textCategoria.text = tarefa.categoria.descricao
+        holder.binding.textNome.text = task.name
+        holder.binding.textDescricao.text = task.description
+        holder.binding.textResponsavel.text = task.responsavel
+        holder.binding.textData.text = task.date
+        holder.binding.switch1.isChecked = task.status
+        holder.binding.textCategoria.text = task.category.description
 
         holder.itemView.setOnClickListener {
-            taskClickListener.onTaskClickLister(tarefa)
+            taskClickListener.onTaskClickLister(task)
         }
 
         holder.binding.switch1
             .setOnCheckedChangeListener { compoundButton, ativo ->
-                tarefa.status = ativo
-                mainViewModel.updateTarefa(tarefa)
+                task.status = ativo
+                mainViewModel.taskUpdate(task)
             }
 
     }
 
     override fun getItemCount(): Int {
-        return listTarefa.size
+        return taskList.size
     }
 
-    fun setList(list: List<Tarefa>){
-        listTarefa = list.sortedByDescending { it.id }
+    fun setList(list: List<Task>){
+        taskList = list.sortedByDescending { it.id }
         notifyDataSetChanged()
     }
 }

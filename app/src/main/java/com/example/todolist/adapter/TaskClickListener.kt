@@ -1,10 +1,10 @@
 package com.example.todolist.adapter
 
-import com.example.todolist.model.Tarefa
+import com.example.todolist.model.Task
 
 interface TaskClickListener {
 
-    fun onTaskClickLister(tarefa: Tarefa)
+    fun onTaskClickLister(task: Task)
 
 
 }

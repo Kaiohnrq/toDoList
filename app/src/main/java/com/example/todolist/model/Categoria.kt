@@ -1,13 +1,13 @@
 package com.example.todolist.model
 
-data class Categoria (
+data class Category (
     var id: Long,
-    var descricao: String?,
-    var tarefas: List<Tarefa>?
+    var description: String?,
+    var tasks: List<Task>?
         ) {
 
     override fun toString(): String {
-        return descricao!!
+        return description!!
     }
 
 }

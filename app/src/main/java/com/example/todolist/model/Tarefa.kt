@@ -1,12 +1,12 @@
 package com.example.todolist.model
 
-data class Tarefa (
+data class Task (
     var id: Long,
-    var nome: String,
-    var descricao: String,
+    var name: String,
+    var description: String,
     var responsavel: String,
-    var data: String,
+    var date: String,
     var status: Boolean,
-    var categoria: Categoria
+    var category: Category
         ) {
 }

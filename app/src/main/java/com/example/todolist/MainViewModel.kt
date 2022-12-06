@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.todolist.api.Repository
-import com.example.todolist.model.Categoria
-import com.example.todolist.model.Tarefa
+import com.example.todolist.model.Category
+import com.example.todolist.model.Task
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -18,25 +18,25 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val repository: Repository
     ): ViewModel() {
-    var tarefaSeleciona: Tarefa?= null
+    var selecTask: Task?= null
 
-    private val _myCategoriaResponse = MutableLiveData<Response<List<Categoria>>>()
-    private val _myTarefaResponse = MutableLiveData<Response<List<Tarefa>>>()
+    private val _myResponseCategory = MutableLiveData<Response<List<Category>>>()
+    private val _myResponseTask = MutableLiveData<Response<List<Task>>>()
 
-    val myCategoriaResponse: LiveData<Response<List<Categoria>>> = _myCategoriaResponse
-    val myTarefaResponse: LiveData<Response<List<Tarefa>>> = _myTarefaResponse
+    val myResponseCategory: LiveData<Response<List<Category>>> = _myResponseCategory
+    val myResponseTask: LiveData<Response<List<Task>>> = _myResponseTask
 
-    val dataSelecionada = MutableLiveData<LocalDate>()
+    val selectedDate = MutableLiveData<LocalDate>()
 
     init {
-        listCategoria()
+        categoryList()
     }
 
-    fun listCategoria() {
+    fun categoryList() {
         viewModelScope.launch {
             try {
-                val response = repository.listCategoria()
-                _myCategoriaResponse.value = response
+                val response = repository.categoryList()
+                _myResponseCategory.value = response
             } catch (e: Exception) {
                 Log.d("Erro", e.message.toString())
             }
@@ -44,13 +44,13 @@ class MainViewModel @Inject constructor(
 
     }
 
-    fun addTarefa(tarefa: Tarefa){
+    fun taskAdd(task: Task){
 
         viewModelScope.launch {
 
             try {
 
-                repository.addTarefa((tarefa))
+                repository.taskAdd((task))
 
             } catch (e: Exception){
 
@@ -62,14 +62,14 @@ class MainViewModel @Inject constructor(
 
     }
 
-    fun listTarefa() {
+    fun taskList() {
 
         viewModelScope.launch {
             try {
 
-                val response = repository.listTarefa()
-                _myTarefaResponse.value = response
-                listTarefa()
+                val response = repository.taskList()
+                _myResponseTask.value = response
+                taskList()
 
             } catch (e: Exception) {
 
@@ -80,12 +80,12 @@ class MainViewModel @Inject constructor(
 
     }
 
-    fun updateTarefa(tarefa: Tarefa){
+    fun taskUpdate(task: Task){
 
         viewModelScope.launch {
             try{
-                repository.updateTarefa(tarefa)
-                listTarefa()
+                repository.taskUpdate(task)
+                taskList()
             } catch (e: Exception){
                 Log.d("Erro", e.message.toString())
             }

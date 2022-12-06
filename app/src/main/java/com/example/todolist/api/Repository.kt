@@ -1,30 +1,30 @@
 package com.example.todolist.api
 
-import com.example.todolist.model.Categoria
-import com.example.todolist.model.Tarefa
+import com.example.todolist.model.Category
+import com.example.todolist.model.Task
 import retrofit2.Response
 
 class Repository {
 
-    suspend fun listCategoria(): Response<List<Categoria>>{
-        return RetrofitInstance.api.listCategoria()
+    suspend fun categoryList(): Response<List<Category>>{
+        return RetrofitInstance.api.categoryList()
     }
 
-    suspend fun addTarefa(tarefa: Tarefa): Response<Tarefa>{
+    suspend fun taskAdd(task: Task): Response<Task>{
 
-        return RetrofitInstance.api.addTarefa((tarefa))
-
-    }
-
-    suspend fun listTarefa(): Response<List<Tarefa>>{
-
-        return RetrofitInstance.api.listTarefa()
+        return RetrofitInstance.api.taskAdd((task))
 
     }
 
-    suspend fun updateTarefa(tarefa: Tarefa): Response<Tarefa>{
+    suspend fun taskList(): Response<List<Task>>{
 
-        return RetrofitInstance.api.updateTarefa(tarefa)
+        return RetrofitInstance.api.taskList()
+
+    }
+
+    suspend fun taskUpdate(task: Task): Response<Task>{
+
+        return RetrofitInstance.api.taskUpdate(task)
 
     }
 
